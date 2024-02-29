@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: hsl(240, 3%, 7%);
+    background-color: hsl(37, 36%, 91%);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -56,19 +56,19 @@ body {
 }
 
 .key.wrong {
-    --lightness: 23%;
+    --lightness: 30%;
 }
 
 .key.wrong-location {
-    --hue: 49;
-    --saturation: 51%;
-    --lightness: 47%;
+    --hue: 50;
+    --saturation: 40%;
+    --lightness: 60%;
 }
 
 .key.correct {
-    --hue: 115;
-    --saturation: 29%;
-    --lightness: 43%;
+    --hue: 114;
+    --saturation: 16%;
+    --lightness: 60%;
 }
 
 .guess-grid {
@@ -85,32 +85,97 @@ body {
 .tile {
     font-size: 2em;
     color: white;
-    border: .05em solid hsl(240, 2%, 23%);
+    border: .05em solid hsl(240, 1%, 40%);
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
+    transition: transform 250ms linear;
 }
 
 .tile[data-state="active"] {
-    border-color: hsl(200, 1%, 34%);
+    color: black;
 }
   
 .tile[data-state="wrong"] {
     border: none;
-    background-color: hsl(240, 2%, 23%);
+    background-color: hsl(240, 2%, 50%);
 }
   
 .tile[data-state="wrong-location"] {
     border: none;
-    background-color: hsl(49, 51%, 47%);
+    background-color: hsl(50, 40%, 60%);
 }
   
 .tile[data-state="correct"] {
     border: none;
-    background-color: hsl(115, 29%, 43%);
+    background-color: hsl(114, 16%, 60%);
+}
+
+.tile.shake {
+    animation: shake 250ms ease-in-out;
+}
+
+.tile.dance {
+    animation: dance 500ms ease-in-out;
+}
+
+.tile.flip {
+    transform: rotateX(90deg);
+}
+
+@keyframes shake {
+    10% {
+        transform: translateX(-5%);
+    }
+
+    30% {
+        transform: translateX(5%);
+    }
+
+    50% {
+        transform: translateX(-7.5%);
+    }
+
+    70% {
+        transform: translateX(7.5%);
+    }
+
+    90% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes dance {
+    20% {
+      transform: translateY(-50%);
+    }  
+  
+    40% {
+      transform: translateY(5%);
+    }  
+  
+    60% {
+      transform: translateY(-25%);
+    }  
+  
+    80% {
+      transform: translateY(2.5%);
+    }  
+  
+    90% {
+      transform: translateY(-5%);
+    }  
+  
+    100% {
+      transform: translateY(0);
+    }
 }
 
 .alert-container {
@@ -140,4 +205,24 @@ body {
   
 .alert.hide {
     opacity: 0;
+}
+
+.play-again-button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: hsl(132, 18%, 33%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto;
+    max-width: 90%;
+    text-align: center;
 }
